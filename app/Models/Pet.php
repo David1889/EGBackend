@@ -21,4 +21,12 @@ class Pet extends Model
         'fecha_muerte'
     ];
 
+    public function client(){
+        return $this->belongsTo('App\Client');
+    }
+
+    public function attentions(){
+        return $this->hasMany('App\Attention');
+    }
+
 }
