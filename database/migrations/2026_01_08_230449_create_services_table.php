@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email');
-            $table->string('clave');
-            $table->integer('rol_id')->unsigned();
-            $table->foreign('rol_id')->references('id')->on('roles');
+        Schema::create('services', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('tipo');
+            $table->decimal('precio', 10, 2);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal');
+        Schema::dropIfExists('services');
     }
 };

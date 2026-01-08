@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pet;
 
 class Client extends Model
 {
-    protected $table = 'clients';
+    use HasFactory;
 
     protected $fillable = [
         'nombre',
@@ -17,7 +19,8 @@ class Client extends Model
         'telefono'
     ];
 
-    public function pets(){
-        return $this->hasMany('App\Pet');
+    public function pets()
+    {
+        return $this->hasMany(Pet::class, 'cliente_id');
     }
 }

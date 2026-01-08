@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pet;
+use App\Models\Service;
+use App\Models\Personal;
 
 class Attention extends Model
 {
-    protected $table = 'attentions';
+    use HasFactory;
 
     protected $fillable = [
         'pet_id',
@@ -17,16 +21,22 @@ class Attention extends Model
         'descripcion'
     ];
 
-    public function pet(){
-        $this->belongsTo('App\Pet');
+    protected $casts = [
+        'fecha_hora' => 'datetime',
+    ];
+
+    public function pet()
+    {
+        return $this->belongsTo(Pet::class);
     }
 
-    public function service(){
-        $this->belongsTo('App\Service');
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
     }
 
-    public function personal(){
-        $this->belongsTo('App\Personal');
+    public function personal()
+    {
+        return $this->belongsTo(Personal::class);
     }
-    
 }

@@ -12,16 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('attentions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('pet_id')->unsigned();
-            $table->foreign('pet_id')->references('id')->on('pets');
-            $table->integer('service_id')->unsigned();
-            $table->foreign('service_id')->references('id')->on('services');
-            $table->integer('personal_id')->unsigned();
-            $table->foreign('personal_id')->references('id')->on('personal');
+            $table->id();
+            $table->foreignId('pet_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('service_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('personal_id')->constrained('personals')->cascadeOnDelete();
             $table->dateTime('fecha_hora');
-            $table->string('titulo')->nullable();
-            $table->longText('descripcion')->nullable();        
+            $table->string('titulo');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

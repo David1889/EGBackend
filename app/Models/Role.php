@@ -2,17 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Personal;
 
 class Role extends Model
 {
-    protected $table = 'roles';
+    use HasFactory;
 
     protected $fillable = [
         'nombre'
     ];
 
-    public function personals(){
-        return $this->hasMany('App\Personal');
+    public function personals()
+    {
+        return $this->hasMany(Personal::class, 'rol_id');
     }
 }

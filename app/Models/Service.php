@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Attention;
 
 class Service extends Model
 {
-    protected $table = 'services';
+    use HasFactory;
 
     protected $fillable = [
         'nombre',
@@ -14,7 +16,8 @@ class Service extends Model
         'precio'
     ];
 
-    public function attentions(){
-        return $this->hasMany('App\Attention');
+    public function attentions()
+    {
+        return $this->hasMany(Attention::class);
     }
 }
