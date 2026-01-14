@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\PetController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\RoleController;
-
+use App\Http\Controllers\Api\UserController;
 
 //Rutas de clients
 
@@ -51,5 +51,9 @@ Route::delete('/roles/{roleId}', [RoleController::class, 'delete']);
 Route::get('/roles/{roleId}/personals', [RoleController::class, 'getWithPersonals']);
 
 
+//Rutas de users
+Route::post('/users', [UserController::class, 'create']);
+Route::post('/users/login', [UserController::class, 'login']);
+Route::middleware('auth:sanctum')->post('/users/logout', [UserController::class, 'logout']);
 
 

@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use App\Models\Personal;
+use App\Models\Client;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'name',
@@ -33,5 +35,10 @@ class User extends Authenticatable
     public function personal()
     {
         return $this->hasOne(Personal::class);
+    }
+
+    public function client()
+    {
+        return $this->hasOne(Client::class);
     }
 }
