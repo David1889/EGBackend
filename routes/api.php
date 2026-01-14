@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PetController;
 use App\Http\Controllers\Api\ClientController;
+use App\Http\Controllers\Api\ServiceController;
+use App\Http\Controllers\Api\RoleController;
+
 
 //Rutas de clients
 
@@ -32,8 +35,20 @@ Route::put('/pets/{id}', [PetController::class, 'updateOne']); //Falta
 
 Route::delete('/pets/{id}', [PetController::class, 'deleteOne']); //Falta
 
+//Rutas de services
+Route::get('/services', [ServiceController::class, 'getAll']);
+Route::get('/services/{serviceId}', [ServiceController::class, 'getOne']);
+Route::post('/services', [ServiceController::class, 'create']);
+Route::put('/services/{serviceId}', [ServiceController::class, 'update']);
+Route::delete('/services/{serviceId}', [ServiceController::class, 'delete']);
 
-
+// Rutas de roles
+Route::get('/roles', [RoleController::class, 'getAll']);
+Route::get('/roles/{roleId}', [RoleController::class, 'getOne']);
+Route::post('/roles', [RoleController::class, 'create']);
+Route::put('/roles/{roleId}', [RoleController::class, 'update']);
+Route::delete('/roles/{roleId}', [RoleController::class, 'delete']);
+Route::get('/roles/{roleId}/personals', [RoleController::class, 'getWithPersonals']);
 
 
 
