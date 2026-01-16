@@ -29,11 +29,11 @@ Route::get('/pets', [PetController::class, 'getAll']);
 
 Route::get('/pets/{id}', [PetController::class, 'getOne']);
 
-Route::post('/pets', [PetController::class, 'addOne']); //Falta
+Route::post('/pets', [PetController::class, 'create']); 
 
-Route::put('/pets/{id}', [PetController::class, 'updateOne']); //Falta
+Route::put('/pets/{id}', [PetController::class, 'update']);
 
-Route::delete('/pets/{id}', [PetController::class, 'deleteOne']); //Falta
+Route::delete('/pets/{id}', [PetController::class, 'delete']); 
 
 //Rutas de services
 Route::get('/services', [ServiceController::class, 'getAll']);

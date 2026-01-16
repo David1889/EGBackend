@@ -16,7 +16,8 @@ class Client extends Model
         'email',
         'ciudad',
         'direccion',
-        'telefono'
+        'telefono',
+        'user_id'
     ];
 
     public function pets()
